@@ -1,8 +1,10 @@
-FROM fedora:24
-MAINTAINER Seth Jennings <sethdjennings@gmail.com>
+FROM debian:11-slim
+MAINTAINER Niccolo Castelli <n.castelli@bytenite.com>
 
-RUN dnf install certbot -y && dnf clean all
-RUN mkdir /etc/letsencrypt
+RUN apt-get update  -y && apt-get -y install certbot -y && apt-get clean all
+RUN apt-get -y install python3 curl
+RUN mkdir -p /etc/letsencrypt
+RUN mkdir -p /var/run/secrets/certificates-updater/
 
 CMD ["/entrypoint.sh"]
 
