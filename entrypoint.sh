@@ -12,6 +12,10 @@ NOW=$(date '+%Y-%m-%dT%H:%M:%SZ')
 cd $HOME
 python3 -m http.server 80 &
 PID=$!
+
+echo "[INFO] Waiting 5 seconds for HTTP server to start..."
+sleep 5
+
 if [[ -z $ISSUE_CERTIFICATE ]]; then
 	echo "Running certbot to issue a TEST certificate..."
 	certbot certonly --test-cert --webroot -w $HOME -n --agree-tos --email ${EMAIL} --no-self-upgrade -d ${DOMAINS} #Use --test-cert for development
