@@ -66,3 +66,8 @@ curl --location --request PATCH "https://kubernetes/apis/apps/v1/namespaces/${NA
     }
 }'
 
+# Delay to keep pod alive during Let's Encrypt validation
+echo "[INFO] Sleeping 60 seconds to allow Let's Encrypt challenge validation to complete..."
+sleep 60
+
+echo "[INFO] Done."
